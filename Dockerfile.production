@@ -1,0 +1,6 @@
+FROM python:3.12.1-alpine
+WORKDIR /app
+COPY . /app
+
+RUN apk add build-base && pip install --upgrade pip
+RUN pip install -r requirements.prod.txt && python manage.py collectstatic --noinput
